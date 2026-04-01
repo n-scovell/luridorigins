@@ -74,7 +74,8 @@ npm install
 ```bash
 npm run dev
 ```
-
+### Run the image optimization
+npm run dev - any image in the original folder will be run
 ---
 
 ## 📁 Future Improvements
