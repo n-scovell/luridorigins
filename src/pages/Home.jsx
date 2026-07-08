@@ -2,18 +2,52 @@ export default function Home() {
   return (
   <>
     <div className="home">
-      <h1>Welcome to Lurid Origins!</h1>
-      <p>This is an application that I made to simply show technical coding challenges like:</p>
-      <ol>
-        <li>Making an Supabase API call</li>
-        <li>Using Sharp for image optimization</li>
-        <li>Global State Management using Zustand</li>
-        <li>Using Router for page navigation</li>
-      </ol>
-      <p>
-        But since I love horror movies and have for a long time documented every horror movie I have ever watched... 
-        I felt like it would be an ideal way to show thes techniques thru this fun library of pointless knowledge.
-      </p>
+      <div class="middle">
+        <img className="logo" src="/LuridOrigins_Logo.png" />
+        <h3>DARK MEDIA. DISTURBING ORIGINS</h3>
+        <button>EXPLORE THE ORIGINS</button>
+      </div>
+      <ul class="menuTab">
+        <li>
+          <div className="ico">
+            <img src='/skull.jpg'/>
+          </div>
+          <div className="txt">
+            DARK ARTWORK
+            <p>Original, haunting creations<br/> born from the abyss.</p>
+          </div>
+        </li>
+        <li>
+          <div className="ico">
+            <img src='/eye.jpg'/>
+          </div>
+          <div className="txt">
+            DISTURBING ORIGINS
+            <p>Each piece tells a story.<br/>Uncover the truth.</p>
+          </div>
+        </li>
+        <li>
+          <div className="ico">
+            <img src='/coffin.jpg'/>
+          </div>
+          <div className="txt">
+            EXCLUSIVE MERCH
+            <p>Wear the darkness.<br/>Limited drops.</p>
+          </div>
+        </li>
+        <li>
+          <div className="ico">
+              <img src='/scythe.jpg'/>
+          </div>
+          <div className="txt">
+            JOIN THE CULT
+            <p>Be the first to know what lurks.</p>
+          </div>
+        </li>
+      </ul>
+      <div className="bottom">
+
+      </div>
     </div>
   </>
   )

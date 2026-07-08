@@ -1,139 +1,307 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+$red: #E50000;
+$white: #b3b3b3;
+$black: #0a0a0a;
+
+@mixin myFont() {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+@mixin coolFont($a) {
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:$a;
+}
+
 body {
+    background:$black;
     margin:0px;
-    background:#171717;
-    color:white;
-    font-family: 'Inter';
 }
-
-
 * {
-    box-sizing:border-box;
+    text-decoration:none;
+    padding:0px;
     margin:0px;
+    list-style-type:none;
 }
-$hdrColor:#B52000;
-.mainContainer {
-    display:flex;
-    height:100%;
-    min-height: 100vh;
-    nav {
-        flex: 0 0 20%;
-        max-width:250px;
-        min-width:100px;
-        height:100wh;
-        border-right:3px solid #333;
-        text-align:center;
-        img {
-            width:80%;
-            margin:auto;
-        }
+button {
+    background:transparent;
+    border:none;
+}
+
+@mixin redBorder() {
+    &:before, &:after {
+        content:' ';
+        width:5px;
+        height:100%;
+        position:absolute;
+        top:0px;
+        background-image:url('/Line3.png');
+        // mix-blend-mode:color;
+    }
+    &:before {left:-5px;}
+    &:after {right:-3px;}
+}
+
+main {
+    height:auto;
+    .search {
+        color:white;
         ul {
-            position:relative;
-            list-style-type:none;
-            padding-top:20px;
-            text-align:left;
-            width:100%;
-            height:300px;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:10px;
             li {
-                color:white;
-                font-weight:bold;
-                font-size:15px;
-                margin-bottom:10px;
-                a {
-                    color:inherit;
-                    text-decoration:none;
+                flex: 0 0 20%;
+                height:600px;
+                overflow:hidden;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                position:relative;
+                .filter {
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    width:100%;
+                    height:100%;
+                    z-index:5;
+                    overflow:hidden;
+                    opacity:1;
+                    transition: opacity .5s;
+                    img {
+                        width:2px;
+                        position:absolute;
+                        transform:translate(-50%);
+                    }
+                    &:before, &:after {
+                        content:' ';
+                        height:102%;
+                        position:absolute;
+                        top:50%;
+                        transform:translateY(-50%); 
+                    }
+                    &.a {
+                        &:before {
+                            width:10px;
+                            left:-3px;
+                            background-image:url('/lineSideC.png');
+                            background-size:contain;
+                        }
+                        &:after {
+                            width:10px;
+                            right:-3px;
+                            background-image:url('/lineSide.png');
+                            background-size:contain;
+                        }
+                    }
+                    &.b {
+                        &:before {
+                            width:10px;
+                            left:-3px;
+                            background-image:url('/lineSideB.png');
+                            background-size:contain;
+                        }
+                        &:after {
+                            width:10px;
+                            right:-3px;
+                            background-image:url('/lineSideC.png');
+                            background-size:contain;
+                        }
+                    }
+                    &.c {
+                        &:before {
+                            width:10px;
+                            left:-3px;
+                            background-image:url('/lineSideB.png');
+                            background-size:contain;
+                        }
+                        &:after {
+                            width:10px;
+                            right:-3px;
+                            background-image:url('/lineSideC.png');
+                            background-size:contain;
+                        }
+                    }
+                    &.d {
+                        &:before {
+                            width:10px;
+                            left:-3px;
+                            background-image:url('/lineSide.png');
+                            background-size:contain;
+                        }
+                        &:after {
+                            width:10px;
+                            right:-3px;
+                            background-image:url('/lineSideC.png');
+                            background-size:contain;
+                        }
+                    }
+                    &.e {
+                        background:purple;
+                    }
                 }
-            }
-            &:before {
-                content:' ';
-                width:80%;
-                height:2px;
-                background:#333;
-                position:absolute;
-                top:0px;
-                left:50%;
-                transform:translate(-50%,-50%);
+                &:hover {
+                    cursor:pointer;
+                    .filter {
+                        opacity:0;
+                        transition: opacity .5s;
+                    }
+                    .image {
+                        
+                        .cont {
+                            
+                            &:before {
+                                opacity:0;
+                                transition: opacity .5s;
+                            }
+                        }
+                    }
+                }
+                .image {
+                    flex:0 0 75%;
+                    position:relative;
+                    padding:10px;
+                    .cont {
+                        position:absolute;
+                        top:0px;
+                        left:50%;
+                        transform:translateX(-50%);
+                        overflow:hidden;
+                        &:before {
+                            content:' ';
+                            width:100%;
+                            height:100%;
+                            position:absolute;
+                            top:0px;
+                            left:0px;
+                            background:$red;
+                            mix-blend-mode:multiply;
+                            opacity:1;
+                            transition: opacity .5s;
+                        }
+                        img {
+                            height:440px;
+                            margin:0px;
+                            border:none;
+                            display: block
+                        }
+                    }
+                }
+                .text {
+                    flex:1;
+                    position:relative;
+                    color:$white;
+                    @include myFont();
+                    text-align:center;
+                    h4 {
+                        font-size:22px;
+                    }
+                    h5 {
+                        @include coolFont(25px);
+                    }
+                }
             }
         }
     }
-    .pages {
-        padding:20px 50px 20px 20px;
-        font-size:9px;
-        h1, h2, h3, h4, h5 {
-            font-family: 'Roboto';
-        }
-        h1 {
-            color:$hdrColor;
-            font-size:35px;
-            letter-spacing:0.01em;
-            margin-bottom:10px;
-        }
-        p, ul, li, a {
-            font-size:14px;
-        }
-        p {
-            margin:10px 0px;
-        }
-        .searchFilms {
-            .mainSearch {
-                padding:30px;
-            }
-            .movieDisplay {
-                position:relative;
-                text-align:center;
-                .inner {
-                    width:95%;
-                    margin:auto;
-                    ul {
-                        display:flex;
-                        gap:10px;
-                        flex-wrap:wrap;
-                        li {
-                            flex: 1;
-                            display:flex;
-                            flex-wrap:nowrap;
-                            min-width:250px;
-                            max-width:250px;
-                            .poster {
-                                flex: 0 0 30%;
-                            }
-                            .text {
-                                padding-left:10px;
-                                text-align:left;
-                                h3 {
-                                    font-size:16px;
-                                    letter-spacing:0.08em;
-                                }
-                            }
-                        }
-                    }
-                }
-                .pagination {
-                    position:absolute;
-                    top:0%;
-                    left:50%;
-                    transform:translate(-50%,-50%);
-                    width:100%;
-                    height:30px;
-                    button {
-                        background:none;
-                        outline:none;
-                        border:none;
-                        color:white;
-                        position:absolute;
-                        top:0px;
-                        &:nth-child(1) {
-                            left:0px;
-                        }
-                        &:nth-child(2) {
-                            right:0px;
-                        }
-                    }
-                }
-                display:flex;
-            }
-        }
+    .home {
+        text-align:center;
+        position:relative;
+        @include coolFont(0px);
+        .bottom {
 
+            width:95%;
+            height:110px;
+            margin:20px auto 150px;
+            border: 3px solid transparent;
+            border-image: url('Line1.png') 30 round;
+            position:relative;
+            @include redBorder();
+            
+        }
+        .menuTab {
+            width:95%;
+            height:120px;
+            border: 3px solid transparent;
+            border-image: url('Line1.png') 30 round;
+            position:relative;
+            margin:20px auto;
+            @include redBorder();
+            display:flex;
+            color:$red;
+            font-size:25px;
+            li {
+                flex:1;
+                position:relative;
+                @include myFont();
+                padding:0px;
+                display:flex;
+                .ico {
+                    flex:1;
+                    max-width:80px;
+                    position:relative;
+                    img {
+                        max-width:80px;
+                        mix-blend-mode:color;
+                        position:absolute;
+                        top:50%;
+                        left:50%;
+                        transform:translate(-50%,-50%);
+                    }
+                }
+                .txt {
+                    flex:1;
+                    text-align:left;
+                    padding-left:15px;
+                    color: $white;
+                    p {
+                        @include coolFont(18px);
+                    }
+                }
+                &:before {
+                    content:' ';
+                    width:5px;
+                    height:50%;
+                    position:absolute;
+                    top:50%;
+                    right:0px;
+                    transform:translateY(-50%);
+                    opacity:.5;
+                    background-image:url('/Line3.png');
+                }
+                &:last-child {
+                    &:before {
+                        display:none;
+                    }
+                }
+            }
+        }
+        .middle {
+            width:700px;
+            margin:auto;
+            img {
+                width:75%;
+                position:relative;
+                margin:0px -50px -20px;
+            }
+            h3 {
+                color:$white;
+                @include coolFont(25px);
+            }
+            button {
+                padding:10px 100px;
+                border: 3px solid transparent;
+                border-image: url('Line1.png') 30 round;
+                color:$red;
+                @include coolFont(25px);
+
+                margin-top:20px;
+                position:relative;
+                cursor:pointer;
+                @include redBorder();
+            }
+        }
     }
 }
