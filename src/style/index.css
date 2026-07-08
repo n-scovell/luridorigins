@@ -1,137 +1,322 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 body {
+  background: #0a0a0a;
   margin: 0px;
-  background: #171717;
-  color: white;
-  font-family: "Inter";
 }
 
 * {
-  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0px;
   margin: 0px;
+  list-style-type: none;
 }
 
-.mainContainer {
-  display: flex;
-  height: 100%;
-  min-height: 100vh;
-}
-.mainContainer nav {
-  flex: 0 0 20%;
-  max-width: 250px;
-  min-width: 100px;
-  height: 100wh;
-  border-right: 3px solid #333;
-  text-align: center;
-}
-.mainContainer nav img {
-  width: 80%;
-  margin: auto;
-}
-.mainContainer nav ul {
-  position: relative;
-  list-style-type: none;
-  padding-top: 20px;
-  text-align: left;
-  width: 100%;
-  height: 300px;
-}
-.mainContainer nav ul li {
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-.mainContainer nav ul li a {
-  color: inherit;
-  text-decoration: none;
-}
-.mainContainer nav ul:before {
-  content: " ";
-  width: 80%;
-  height: 2px;
-  background: #333;
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.mainContainer .pages {
-  padding: 20px 50px 20px 20px;
-  font-size: 9px;
-}
-.mainContainer .pages h1, .mainContainer .pages h2, .mainContainer .pages h3, .mainContainer .pages h4, .mainContainer .pages h5 {
-  font-family: "Roboto";
-}
-.mainContainer .pages h1 {
-  color: #B52000;
-  font-size: 35px;
-  letter-spacing: 0.01em;
-  margin-bottom: 10px;
-}
-.mainContainer .pages p, .mainContainer .pages ul, .mainContainer .pages li, .mainContainer .pages a {
-  font-size: 14px;
-}
-.mainContainer .pages p {
-  margin: 10px 0px;
-}
-.mainContainer .pages .searchFilms .mainSearch {
-  padding: 30px;
-}
-.mainContainer .pages .searchFilms .movieDisplay {
-  position: relative;
-  text-align: center;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner {
-  width: 95%;
-  margin: auto;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner ul {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner ul li {
-  flex: 1;
-  display: flex;
-  flex-wrap: nowrap;
-  min-width: 250px;
-  max-width: 250px;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner ul li .poster {
-  flex: 0 0 30%;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner ul li .text {
-  padding-left: 10px;
-  text-align: left;
-}
-.mainContainer .pages .searchFilms .movieDisplay .inner ul li .text h3 {
-  font-size: 16px;
-  letter-spacing: 0.08em;
-}
-.mainContainer .pages .searchFilms .movieDisplay .pagination {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 30px;
-}
-.mainContainer .pages .searchFilms .movieDisplay .pagination button {
-  background: none;
-  outline: none;
+button {
+  background: transparent;
   border: none;
+}
+
+main {
+  height: auto;
+}
+main .search {
   color: white;
+}
+main .search ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+main .search ul li {
+  flex: 0 0 20%;
+  height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+main .search ul li .filter {
   position: absolute;
   top: 0px;
-}
-.mainContainer .pages .searchFilms .movieDisplay .pagination button:nth-child(1) {
   left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
-.mainContainer .pages .searchFilms .movieDisplay .pagination button:nth-child(2) {
-  right: 0px;
+main .search ul li .filter img {
+  width: 2px;
+  position: absolute;
+  transform: translate(-50%);
 }
-.mainContainer .pages .searchFilms .movieDisplay {
+main .search ul li .filter:before, main .search ul li .filter:after {
+  content: " ";
+  height: 102%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+main .search ul li .filter.a:before {
+  width: 10px;
+  left: -3px;
+  background-image: url("/lineSideC.png");
+  background-size: contain;
+}
+main .search ul li .filter.a:after {
+  width: 10px;
+  right: -3px;
+  background-image: url("/lineSide.png");
+  background-size: contain;
+}
+main .search ul li .filter.b:before {
+  width: 10px;
+  left: -3px;
+  background-image: url("/lineSideB.png");
+  background-size: contain;
+}
+main .search ul li .filter.b:after {
+  width: 10px;
+  right: -3px;
+  background-image: url("/lineSideC.png");
+  background-size: contain;
+}
+main .search ul li .filter.c:before {
+  width: 10px;
+  left: -3px;
+  background-image: url("/lineSideB.png");
+  background-size: contain;
+}
+main .search ul li .filter.c:after {
+  width: 10px;
+  right: -3px;
+  background-image: url("/lineSideC.png");
+  background-size: contain;
+}
+main .search ul li .filter.d:before {
+  width: 10px;
+  left: -3px;
+  background-image: url("/lineSide.png");
+  background-size: contain;
+}
+main .search ul li .filter.d:after {
+  width: 10px;
+  right: -3px;
+  background-image: url("/lineSideC.png");
+  background-size: contain;
+}
+main .search ul li .filter.e {
+  background: purple;
+}
+main .search ul li:hover {
+  cursor: pointer;
+}
+main .search ul li:hover .filter {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+main .search ul li:hover .image .cont:before {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+main .search ul li .image {
+  flex: 0 0 75%;
+  position: relative;
+  padding: 10px;
+}
+main .search ul li .image .cont {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+main .search ul li .image .cont:before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #E50000;
+  mix-blend-mode: multiply;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+main .search ul li .image .cont img {
+  height: 440px;
+  margin: 0px;
+  border: none;
+  display: block;
+}
+main .search ul li .text {
+  flex: 1;
+  position: relative;
+  color: #b3b3b3;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  text-align: center;
+}
+main .search ul li .text h4 {
+  font-size: 22px;
+}
+main .search ul li .text h5 {
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+}
+main .home {
+  text-align: center;
+  position: relative;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0px;
+}
+main .home .bottom {
+  width: 95%;
+  height: 110px;
+  margin: 20px auto 150px;
+  border: 3px solid transparent;
+  -o-border-image: url("Line1.png") 30 round;
+     border-image: url("Line1.png") 30 round;
+  position: relative;
+}
+main .home .bottom:before, main .home .bottom:after {
+  content: " ";
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  background-image: url("/Line3.png");
+}
+main .home .bottom:before {
+  left: -5px;
+}
+main .home .bottom:after {
+  right: -3px;
+}
+main .home .menuTab {
+  width: 95%;
+  height: 120px;
+  border: 3px solid transparent;
+  -o-border-image: url("Line1.png") 30 round;
+     border-image: url("Line1.png") 30 round;
+  position: relative;
+  margin: 20px auto;
+}
+main .home .menuTab:before, main .home .menuTab:after {
+  content: " ";
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  background-image: url("/Line3.png");
+}
+main .home .menuTab:before {
+  left: -5px;
+}
+main .home .menuTab:after {
+  right: -3px;
+}
+main .home .menuTab {
   display: flex;
+  color: #E50000;
+  font-size: 25px;
+}
+main .home .menuTab li {
+  flex: 1;
+  position: relative;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  padding: 0px;
+  display: flex;
+}
+main .home .menuTab li .ico {
+  flex: 1;
+  max-width: 80px;
+  position: relative;
+}
+main .home .menuTab li .ico img {
+  max-width: 80px;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+main .home .menuTab li .txt {
+  flex: 1;
+  text-align: left;
+  padding-left: 15px;
+  color: #b3b3b3;
+}
+main .home .menuTab li .txt p {
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+main .home .menuTab li:before {
+  content: " ";
+  width: 5px;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  background-image: url("/Line3.png");
+}
+main .home .menuTab li:last-child:before {
+  display: none;
+}
+main .home .middle {
+  width: 700px;
+  margin: auto;
+}
+main .home .middle img {
+  width: 75%;
+  position: relative;
+  margin: 0px -50px -20px;
+}
+main .home .middle h3 {
+  color: #b3b3b3;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+}
+main .home .middle button {
+  padding: 10px 100px;
+  border: 3px solid transparent;
+  -o-border-image: url("Line1.png") 30 round;
+     border-image: url("Line1.png") 30 round;
+  color: #E50000;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  margin-top: 20px;
+  position: relative;
+  cursor: pointer;
+}
+main .home .middle button:before, main .home .middle button:after {
+  content: " ";
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  background-image: url("/Line3.png");
+}
+main .home .middle button:before {
+  left: -5px;
+}
+main .home .middle button:after {
+  right: -3px;
 }/*# sourceMappingURL=index.css.map */

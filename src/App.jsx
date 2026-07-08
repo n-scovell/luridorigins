@@ -6,7 +6,9 @@ import Pagin from './comps/Pagination'
 import MDisplay from './comps/MoviesDisplay'
 import Loader from './comps/Loader'
 import Modal from './comps/Modal'
-import LO from '/LuridOrigins_Logo.png'
+
+
+// import LO from '/LuridOrigins_Logo.png'
 function App() {
   const {
     getLuridOrigins, 
@@ -19,11 +21,11 @@ function App() {
   // useEffect(() => { getAllLuridOrigins(mypage, limit)}, [mypage])
   return (
     <>
-      <div className="mainContainer">
+      <div className="container">
         <Navigation/>
-        <div className="pages">
+        <main>
           <Browser/>
-        </div>
+        </main>
       </div>
       {modalOpen && <Modal />}
     </>

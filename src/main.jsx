@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import './style/index.css'
 import LuridOrigins from './App.jsx'
 
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
