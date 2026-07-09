@@ -18,17 +18,58 @@ button {
 main {
   height: auto;
 }
+main h2 {
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color: #E50000;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+main h2 img {
+  flex: 1;
+  height: 1px;
+}
+main h2 .sort {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: center;
+}
+main h2 .sort p {
+  font-size: 15px;
+}
+main h2 .sort input {
+  padding: 10px 15px;
+  background: transparent;
+  background-image: url("/input.png");
+  border: none;
+  outline: none;
+  color: #E50000;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 main .search {
   color: white;
+  padding: 20px 30px;
 }
-main .search ul {
+main .search .movies {
+  padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
-main .search ul li {
-  flex: 0 0 20%;
+main .search .movies li {
+  flex: 1;
+  min-width: 290px;
   height: 600px;
   overflow: hidden;
   display: flex;
@@ -36,7 +77,7 @@ main .search ul li {
   justify-content: center;
   position: relative;
 }
-main .search ul li .filter {
+main .search .movies li .filter {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -47,93 +88,93 @@ main .search ul li .filter {
   opacity: 1;
   transition: opacity 0.5s;
 }
-main .search ul li .filter img {
+main .search .movies li .filter img {
   width: 2px;
   position: absolute;
   transform: translate(-50%);
 }
-main .search ul li .filter:before, main .search ul li .filter:after {
+main .search .movies li .filter:before, main .search .movies li .filter:after {
   content: " ";
   height: 102%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
-main .search ul li .filter.a:before {
+main .search .movies li .filter.a:before {
   width: 10px;
   left: -3px;
   background-image: url("/lineSideC.png");
   background-size: contain;
 }
-main .search ul li .filter.a:after {
+main .search .movies li .filter.a:after {
   width: 10px;
   right: -3px;
   background-image: url("/lineSide.png");
   background-size: contain;
 }
-main .search ul li .filter.b:before {
+main .search .movies li .filter.b:before {
   width: 10px;
   left: -3px;
   background-image: url("/lineSideB.png");
   background-size: contain;
 }
-main .search ul li .filter.b:after {
+main .search .movies li .filter.b:after {
   width: 10px;
   right: -3px;
   background-image: url("/lineSideC.png");
   background-size: contain;
 }
-main .search ul li .filter.c:before {
+main .search .movies li .filter.c:before {
   width: 10px;
   left: -3px;
   background-image: url("/lineSideB.png");
   background-size: contain;
 }
-main .search ul li .filter.c:after {
+main .search .movies li .filter.c:after {
   width: 10px;
   right: -3px;
   background-image: url("/lineSideC.png");
   background-size: contain;
 }
-main .search ul li .filter.d:before {
+main .search .movies li .filter.d:before {
   width: 10px;
   left: -3px;
   background-image: url("/lineSide.png");
   background-size: contain;
 }
-main .search ul li .filter.d:after {
+main .search .movies li .filter.d:after {
   width: 10px;
   right: -3px;
   background-image: url("/lineSideC.png");
   background-size: contain;
 }
-main .search ul li .filter.e {
+main .search .movies li .filter.e {
   background: purple;
 }
-main .search ul li:hover {
+main .search .movies li:hover {
   cursor: pointer;
 }
-main .search ul li:hover .filter {
+main .search .movies li:hover .filter {
   opacity: 0;
   transition: opacity 0.5s;
 }
-main .search ul li:hover .image .cont:before {
+main .search .movies li:hover .image .cont:before {
   opacity: 0;
   transition: opacity 0.5s;
 }
-main .search ul li .image {
+main .search .movies li .image {
   flex: 0 0 75%;
   position: relative;
   padding: 10px;
 }
-main .search ul li .image .cont {
+main .search .movies li .image .cont {
   position: absolute;
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
 }
-main .search ul li .image .cont:before {
+main .search .movies li .image .cont:before {
   content: " ";
   width: 100%;
   height: 100%;
@@ -145,13 +186,13 @@ main .search ul li .image .cont:before {
   opacity: 1;
   transition: opacity 0.5s;
 }
-main .search ul li .image .cont img {
+main .search .movies li .image .cont img {
   height: 440px;
   margin: 0px;
   border: none;
   display: block;
 }
-main .search ul li .text {
+main .search .movies li .text {
   flex: 1;
   position: relative;
   color: #b3b3b3;
@@ -160,14 +201,20 @@ main .search ul li .text {
   font-style: normal;
   text-align: center;
 }
-main .search ul li .text h4 {
+main .search .movies li .text h4 {
   font-size: 22px;
 }
-main .search ul li .text h5 {
+main .search .movies li .text h5 {
   font-family: "IM Fell English", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 25px;
+}
+main .search .movies li .text h3 {
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
 }
 main .home {
   text-align: center;
@@ -297,14 +344,6 @@ main .home .middle button {
   border: 3px solid transparent;
   -o-border-image: url("Line1.png") 30 round;
      border-image: url("Line1.png") 30 round;
-  color: #E50000;
-  font-family: "IM Fell English", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 25px;
-  margin-top: 20px;
-  position: relative;
-  cursor: pointer;
 }
 main .home .middle button:before, main .home .middle button:after {
   content: " ";
@@ -319,4 +358,14 @@ main .home .middle button:before {
 }
 main .home .middle button:after {
   right: -3px;
+}
+main .home .middle button {
+  color: #E50000;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  margin-top: 20px;
+  position: relative;
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

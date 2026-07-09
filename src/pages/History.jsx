@@ -1,11 +1,32 @@
-export default function History() {
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchWatchedMovies } from '../states/testSlice';
+
+export default function About() {
+  const dispatch = useDispatch();
+  const { items, loading, error } = useSelector((state) => state.movies);const STATES = useSelector((state)=> state.movies)
+  
+  useEffect(() => {
+    if (items.length === 0) {
+      dispatch(fetchWatchedMovies());
+    }
+  }, [dispatch, items.length]);
+
+  const filterName = (film, year) => {
+    const filterName = film.replace(/[:\-()\/.,!'"]/g, '')
+    return `${filterName} ${year}`
+  }
   return (
-    <>
-      <h1>Welcome to History Page</h1>
-      <p>
-        Below is my new page where I discuss the history of horror. This will give a person a 
-        better means in searching for the right films and finding horror movies that fit their particular tastes.
-      </p>
-    </>
-  )
+    <div className='search'>
+      <h2>Watched Movies ({items.length})</h2>
+      <ul>
+        {items.map((movie) => (
+          <li key={movie.id || movie._id}>
+            <img src={'images/processed/large/' + filterName(movie.movie,movie.year) + '.webp'} />
+            {movie.movie} ({movie.year || movie.releaseYear})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

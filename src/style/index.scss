@@ -46,15 +46,51 @@ button {
 
 main {
     height:auto;
+    h2 {
+        @include coolFont(30px);
+        color:$red;
+        display:flex;
+        gap:10px;
+        margin-bottom:30px;
+        align-items:center;
+        img {
+            flex:1;
+            height:1px;
+        }
+        .sort {
+            display:flex;
+            gap:10px;
+            position:relative;
+            align-items:center;
+            p {
+                font-size:15px;
+            }
+            input {
+                padding:10px 15px;
+                background:transparent;
+                background-image:url('/input.png');
+                border:none;
+                outline:none;
+                color:$red;
+                @include coolFont(13px);
+                background-size:100% 100%;
+                background-repeat:no-repeat;
+
+            }
+        }
+    }
     .search {
         color:white;
-        ul {
+        padding:20px 30px;
+        .movies {
+            padding-top:20px;
             display:flex;
             flex-wrap:wrap;
             justify-content:center;
             gap:10px;
             li {
-                flex: 0 0 20%;
+                flex:1;
+                min-width:290px;
                 height:600px;
                 overflow:hidden;
                 display:flex;
@@ -202,6 +238,9 @@ main {
                     h5 {
                         @include coolFont(25px);
                     }
+                    h3 {
+                        @include coolFont(15px);
+                    }
                 }
             }
         }
@@ -211,7 +250,6 @@ main {
         position:relative;
         @include coolFont(0px);
         .bottom {
-
             width:95%;
             height:110px;
             margin:20px auto 150px;
@@ -219,7 +257,6 @@ main {
             border-image: url('Line1.png') 30 round;
             position:relative;
             @include redBorder();
-            
         }
         .menuTab {
             width:95%;
@@ -294,13 +331,14 @@ main {
                 padding:10px 100px;
                 border: 3px solid transparent;
                 border-image: url('Line1.png') 30 round;
+                @include redBorder();
                 color:$red;
                 @include coolFont(25px);
 
                 margin-top:20px;
                 position:relative;
                 cursor:pointer;
-                @include redBorder();
+                
             }
         }
     }

@@ -2,12 +2,12 @@ export default function Home() {
   return (
   <>
     <div className="home">
-      <div class="middle">
+      <div className="middle">
         <img className="logo" src="/LuridOrigins_Logo.png" />
         <h3>DARK MEDIA. DISTURBING ORIGINS</h3>
         <button>EXPLORE THE ORIGINS</button>
       </div>
-      <ul class="menuTab">
+      <ul className="menuTab">
         <li>
           <div className="ico">
             <img src='/skull.jpg'/>

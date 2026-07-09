@@ -6,7 +6,7 @@ const inputDir = path.join(process.cwd(), 'original');
 const outputDir = path.join(process.cwd(), 'public/images/processed');
 
 const sizes = {
-  thumb: 90,
+  thumb: 150,
   large: 600,
   xlarge: 1200,
 };
