@@ -1,63 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo  } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchWatchedMovies, actions } from '../states/testSlice';
 import FilteredEffect from '../comps/posterFilter'
+
 export default function About() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { items, loading, error, itemsLoaded, lastSearch } = useSelector((state) => state.movies);const STATES = useSelector((state)=> state.movies)
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://lurid-origins-api.vercel.app/api/movies'); 
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
-        let filtered = data.filter(item => item.watched === true);
-        filtered.sort((a, b) => {
-          return new Date(b.watchedDate || b.updatedAt || b.createdAt) - 
-                 new Date(a.watchedDate || a.updatedAt || a.createdAt);
+    if (!itemsLoaded) {
+      dispatch(fetchWatchedMovies());
+    }
+  }, [dispatch, itemsLoaded]);
+
+  const movies = useMemo(() => {
+    const searchTerms = search
+        .toLowerCase()
+        .split(",")
+        .map(term => term.trim())
+        .filter(Boolean);
+      return items.filter((movie) => {
+        return searchTerms.every(term => {
+          return (
+            movie.movie.toLowerCase().includes(term) ||
+            (movie.director || "").toLowerCase().includes(term) ||
+            movie.year.toString().includes(term) ||
+            movie.era.toLowerCase().includes(term) ||
+            movie.tags.some(tag => tag.toLowerCase().includes(term)) ||
+            movie.actors.some(actor => actor.toLowerCase().includes(term))
+          );
         });
-        filtered.sort((a, b) => {
-          const yearA = a.year || a.releaseYear || a.publishedYear || 0;
-          const yearB = b.year || b.releaseYear || b.publishedYear || 0;
-          return yearA - yearB; // descending (newest first)
-        });
-        setItems(filtered);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+      });
+  }, [items, search]);
 
   const filterName = (film, year) => {
     const filterName = film.replace(/[:\-()\/.,!'"]/g, '')
     return `${filterName} ${year}`
   }
 
+
   return (
     <div className='search'>
-      <h1>Watched Items ({items.length})</h1>
-      <ul>
-        {items.map((item) => (
-          <li key={item.id || item._id}>
+      <h2>
+        The Lurid Origins Library - {movies.length}
+        <img src="/Line1.png" />
+        <div class="sort">
+          <p>Search:</p>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             
+          />
+        </div>
+      </h2>
+      <ul className="movies">
+        {movies.map((movie) => (
+          <li key={movie.id || movie._id}>
             <div className="image">
-              
               <div className="cont">
                 <FilteredEffect myStyle='cool' />
-                <img src={'images/processed/large/' + filterName(item.movie,item.year) + '.webp'} />
+                <img src={'images/processed/large/' + filterName(movie.movie,movie.year) + '.webp'} />
               </div>
-              {/* <div className="cont">
-                <img src={'images/processed/large/' + filterName(item.movie,item.year) + '.webp'} />
-              </div> */}
+
             </div>
             <div className="text">
-              <h4>{item.movie}</h4>
-              <h5>{item.year || 'NA'}</h5>
+               <h4>{movie.movie}</h4>
+               <h3>YEAR: {movie.year || 'NA'}</h3>
+               {/* <h3>DIRECTOR: {movie.director}</h3>
+               <h3>STARRING: {movie.actors}</h3> */}
             </div>
           </li>
         ))}

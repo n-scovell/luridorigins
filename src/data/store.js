@@ -1,18 +1,14 @@
-import { create } from 'zustand'
-import { devtools, persist } from 'zustand/middleware'
-import { Actions, States, LocalStore } from './actions.js'
-const useStore = create(
-  devtools( 
-    persist((set, get) => ({
-        ...States(),
-        ...Actions(set, get),
-      }),
-      {
-        name: 'app-storage',
-        partialize: (state) =>
-          Object.fromEntries(Object.entries(state).filter(([key]) => LocalStore.includes(key))),
-      }
-    )
-  )
-)
-export default useStore 
+// src/app/store.js
+import { configureStore } from '@reduxjs/toolkit';
+// Import your slices here
+import testRed from '../states/testSlice';
+
+export const store = configureStore({
+  reducer: {
+    movies: testRed,
+  },
+});
+
+// Optional: Export types for TypeScript users
+// export type RootState = ReturnType<typeof store.getState>;
+// export type AppDispatch = typeof store.dispatch;

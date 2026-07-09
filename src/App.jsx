@@ -1,24 +1,12 @@
-import useStore from './data/store'
+
 import Navigation from './routes/routes'
 import Browser from './routes/browse'
-import { useEffect } from 'react'
-import Pagin from './comps/Pagination'
-import MDisplay from './comps/MoviesDisplay'
-import Loader from './comps/Loader'
-import Modal from './comps/Modal'
+import { useSelector, useDispatch } from 'react-redux';
+import { actions } from './states/testSlice'
 
-
-// import LO from '/LuridOrigins_Logo.png'
 function App() {
-  const {
-    getLuridOrigins, 
-    getAllLuridOrigins, 
-    modalOpen, 
-    mypage, 
-    limit,
-    } = useStore()
-  // useEffect(() => { getLuridOrigins(mypage, limit)}, [mypage])
-  // useEffect(() => { getAllLuridOrigins(mypage, limit)}, [mypage])
+  const dispatch = useDispatch();
+  const STATES = useSelector((state)=> state.counter)
   return (
     <>
       <div className="container">
@@ -27,9 +15,7 @@ function App() {
           <Browser/>
         </main>
       </div>
-      {modalOpen && <Modal />}
     </>
   )
 }
-
 export default App
