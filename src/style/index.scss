@@ -82,7 +82,27 @@ main {
     .search {
         color:white;
         padding:20px 30px;
+        display:flex;
+        flex-wrap:wrap;
+        h2 {
+            flex:0 0 100%;
+        }
+        .categoryChoice {
+            flex: 1;
+            max-width:350px;
+            padding:10px 15px;
+            background:transparent;
+            background-image:url('/input.png');
+            border:none;
+            outline:none;
+            color:$red;
+            @include coolFont(13px);
+            background-size:100% 100%;
+            background-repeat:no-repeat;
+    
+        }
         .movies {
+            flex: 1;
             padding-top:20px;
             display:flex;
             flex-wrap:wrap;

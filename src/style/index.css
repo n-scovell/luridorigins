@@ -59,8 +59,30 @@ main h2 .sort input {
 main .search {
   color: white;
   padding: 20px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+main .search h2 {
+  flex: 0 0 100%;
+}
+main .search .categoryChoice {
+  flex: 1;
+  max-width: 350px;
+  padding: 10px 15px;
+  background: transparent;
+  background-image: url("/input.png");
+  border: none;
+  outline: none;
+  color: #E50000;
+  font-family: "IM Fell English", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 main .search .movies {
+  flex: 1;
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
