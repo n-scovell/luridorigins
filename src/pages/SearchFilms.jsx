@@ -55,6 +55,17 @@ export default function About() {
           />
         </div>
       </h2>
+      <ul className="categoryChoice">
+        <li>ALL MOVIES</li>
+        <li>TRENDY FUCKERS</li>
+        <li>NEW RELEASES</li>
+        <li>TOP RATED</li>
+        <li>HALLOWEEN PICKS</li>
+        <li>SLASHER</li>
+        <li>MONSTER</li>
+        <li>ICONS</li>
+        <li>GHOSTS</li>
+      </ul>
       <ul className="movies">
         {movies.map((movie) => (
           <li key={movie.id || movie._id}>
