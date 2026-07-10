@@ -28,6 +28,7 @@ main h2 {
   gap: 10px;
   margin-bottom: 30px;
   align-items: center;
+  white-space: nowrap;
 }
 main h2 img {
   flex: 1;
@@ -58,9 +59,9 @@ main h2 .sort input {
 }
 main .search {
   color: white;
-  padding: 20px 30px;
+  padding: 20px;
   display: flex;
-  flex-wrap: wrap;
+  gap: 20px;
 }
 main .search h2 {
   flex: 0 0 100%;
@@ -68,18 +69,47 @@ main .search h2 {
 main .search .categoryChoice {
   flex: 1;
   max-width: 350px;
-  padding: 10px 15px;
+  max-height: 400px;
+  height: auto;
+  padding: 30px 15px 0px;
   background: transparent;
-  background-image: url("/input.png");
-  border: none;
-  outline: none;
-  color: #E50000;
-  font-family: "IM Fell English", serif;
-  font-weight: 400;
+  border: 5px solid transparent;
+  border-image-source: url("/boxBig.png");
+  border-image-slice: 10;
+  border-image-repeat: stretch;
+  position: relative;
+  top: 10px;
+}
+main .search .categoryChoice li {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
   font-style: normal;
-  font-size: 13px;
-  background-size: 100% 100%;
+  font-size: 20px;
+  color: #b3b3b3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 9px 0px 9px 55px;
+  margin-bottom: 10px;
+}
+main .search .categoryChoice li img {
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translate(0%, -50%);
+  mix-blend-mode: normal;
+}
+main .search .categoryChoice li:hover {
+  cursor: pointer;
+  background-image: url("/bt_Brush.png");
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: left center;
+  color: #0a0a0a;
+}
+main .search .categoryChoice li:hover img {
+  mix-blend-mode: difference;
 }
 main .search .movies {
   flex: 1;
@@ -91,7 +121,7 @@ main .search .movies {
 }
 main .search .movies li {
   flex: 1;
-  min-width: 290px;
+  min-width: 350px;
   height: 600px;
   overflow: hidden;
   display: flex;

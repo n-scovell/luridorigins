@@ -3,12 +3,12 @@ $red: #E50000;
 $white: #b3b3b3;
 $black: #0a0a0a;
 
-@mixin myFont() {
+@mixin fontA() {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 100;
   font-style: normal;
 }
-@mixin coolFont($a) {
+@mixin fontB($a) {
   font-family: "IM Fell English", serif;
   font-weight: 400;
   font-style: normal;
@@ -47,12 +47,13 @@ button {
 main {
     height:auto;
     h2 {
-        @include coolFont(30px);
+        @include fontB(30px);
         color:$red;
         display:flex;
         gap:10px;
         margin-bottom:30px;
         align-items:center;
+        white-space: nowrap;
         img {
             flex:1;
             height:1px;
@@ -72,7 +73,7 @@ main {
                 border:none;
                 outline:none;
                 color:$red;
-                @include coolFont(13px);
+                @include fontB(13px);
                 background-size:100% 100%;
                 background-repeat:no-repeat;
 
@@ -81,25 +82,54 @@ main {
     }
     .search {
         color:white;
-        padding:20px 30px;
+        padding:20px;
         display:flex;
-        flex-wrap:wrap;
+        gap:20px;
         h2 {
             flex:0 0 100%;
         }
         .categoryChoice {
             flex: 1;
             max-width:350px;
-            padding:10px 15px;
+            max-height:400px;
+            height:auto;
+            padding:30px 15px 0px;
             background:transparent;
-            background-image:url('/input.png');
-            border:none;
-            outline:none;
-            color:$red;
-            @include coolFont(13px);
-            background-size:100% 100%;
-            background-repeat:no-repeat;
-    
+            border: 5px solid transparent;
+            border-image-source: url("/boxBig.png");
+            border-image-slice: 10;
+            border-image-repeat: stretch;
+            position:relative;
+            top:10px;
+            li {
+                @include fontA();
+                font-size:20px;
+                color:$white;
+                position:relative;
+                display:flex;
+                align-items:center;
+                padding:9px 0px 9px 55px;
+                margin-bottom:10px;
+                img {
+                    width:30px;
+                    position:absolute;
+                    top:50%;
+                    left:15px;
+                    transform:translate(0%,-50%);
+                    mix-blend-mode:normal;
+                }
+                &:hover {
+                    cursor:pointer;
+                    background-image:url('/bt_Brush.png');
+                    background-size:contain;
+                    background-repeat:no-repeat;
+                    background-position:left center;
+                    color:$black;
+                    img {
+                        mix-blend-mode:difference;
+                    }
+                }
+            }
         }
         .movies {
             flex: 1;
@@ -110,7 +140,7 @@ main {
             gap:10px;
             li {
                 flex:1;
-                min-width:290px;
+                min-width:350px;
                 height:600px;
                 overflow:hidden;
                 display:flex;
@@ -250,16 +280,16 @@ main {
                     flex:1;
                     position:relative;
                     color:$white;
-                    @include myFont();
+                    @include fontA();
                     text-align:center;
                     h4 {
                         font-size:22px;
                     }
                     h5 {
-                        @include coolFont(25px);
+                        @include fontB(25px);
                     }
                     h3 {
-                        @include coolFont(15px);
+                        @include fontB(15px);
                     }
                 }
             }
@@ -268,7 +298,7 @@ main {
     .home {
         text-align:center;
         position:relative;
-        @include coolFont(0px);
+        @include fontB(0px);
         .bottom {
             width:95%;
             height:110px;
@@ -292,7 +322,7 @@ main {
             li {
                 flex:1;
                 position:relative;
-                @include myFont();
+                @include fontA();
                 padding:0px;
                 display:flex;
                 .ico {
@@ -314,7 +344,7 @@ main {
                     padding-left:15px;
                     color: $white;
                     p {
-                        @include coolFont(18px);
+                        @include fontB(18px);
                     }
                 }
                 &:before {
@@ -345,7 +375,7 @@ main {
             }
             h3 {
                 color:$white;
-                @include coolFont(25px);
+                @include fontB(25px);
             }
             button {
                 padding:10px 100px;
@@ -353,7 +383,7 @@ main {
                 border-image: url('Line1.png') 30 round;
                 @include redBorder();
                 color:$red;
-                @include coolFont(25px);
+                @include fontB(25px);
 
                 margin-top:20px;
                 position:relative;
