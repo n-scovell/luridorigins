@@ -16,11 +16,11 @@ This project is currently a **work in progress**, but core functionality is full
 ## ⚙️ Tech Stack
 
 * **React** – Frontend framework
-* **Zustand** – Global state management
+* **Redux** – State management
 * **Prisma API** – Backend data fetching
 * **Sharp** – Image optimization
 * **React Router** – Client-side routing
-* **Redux** – State management
+
 
 ---
 
