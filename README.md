@@ -17,7 +17,7 @@ This project is currently a **work in progress**, but core functionality is full
 
 * **React** – Frontend framework
 * **Zustand** – Global state management
-* **Supabase API** – Backend data fetching
+* **Prisma API** – Backend data fetching
 * **Sharp** – Image optimization
 * **React Router** – Client-side routing
 
