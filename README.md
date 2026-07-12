@@ -20,6 +20,7 @@ This project is currently a **work in progress**, but core functionality is full
 * **Prisma API** – Backend data fetching
 * **Sharp** – Image optimization
 * **React Router** – Client-side routing
+* **Redux** – State management
 
 ---
 
