@@ -2,7 +2,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   items: [],
+  pagination: [],
   lastSearch: '',
+  fulfilled: [],
   itemsLoaded: false,
   loading: false,
   error: null,
@@ -10,9 +12,8 @@ const initialState = {
 
 export const fetchWatchedMovies = createAsyncThunk(
   'movies/fetchWatchedMovies',
-  async (_, thunkAPI) => {
+  async ({ page, limit } = {}, thunkAPI) => {
     try {
-      // alert('run')
       const response = await fetch('https://lurid-origins-api.vercel.app/api/movies');
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
@@ -24,7 +25,25 @@ export const fetchWatchedMovies = createAsyncThunk(
         const yearB = b.year || b.releaseYear || b.publishedYear || 0;
         return yearA - yearB; // descending (newest first)
       });
-      return filtered;
+
+      const totalItems = filtered.length;
+      const totalPages = Math.ceil(totalItems / limit);
+      const startIndex = (page - 1) * limit;
+      const endIndex = startIndex + limit;
+      
+      const paginatedItems = filtered.slice(startIndex, endIndex);
+
+      return {
+        movies: paginatedItems,
+        pagination: {
+          page,
+          limit,
+          totalItems,
+          totalPages,
+          hasNext: page < totalPages,
+          hasPrev: page > 1,
+        }
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -41,6 +60,17 @@ export const counterSlice = createSlice({
     },
     changeSearch: (state, action) => {
       state.lastSearch = action.payload
+    },
+    changePage: (state, action) => {
+      const newPage = action.payload;
+      if (newPage < 1 || newPage > (state.pagination?.totalPages || 1)) {
+        return;
+      }
+      state.pagination.page = newPage;
+      // state.pagination.page++
+    },
+    addOne: (state, action) => {
+      state.pagination.page++
     }
   },
   extraReducers: (builder) => {
@@ -49,10 +79,12 @@ export const counterSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+      
       .addCase(fetchWatchedMovies.fulfilled, (state, action) => {
         state.loading = false;
         state.itemsLoaded = true;
-        state.items = action.payload;
+        state.pagination = action.payload.pagination;
+        state.items = action.payload.movies;
       })
       .addCase(fetchWatchedMovies.rejected, (state, action) => {
         state.loading = false;
