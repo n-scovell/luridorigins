@@ -5,44 +5,16 @@ import FilteredEffect from '../comps/posterFilter'
 
 export default function About() {
   const dispatch = useDispatch();
-  const { items, loading, error, itemsLoaded, lastSearch } = useSelector((state) => state.movies);const STATES = useSelector((state)=> state.movies)
+  const [ myPage, setPage ] = useState(1)
+  const { items, loading, error, itemsLoaded, lastSearch, pagination } = useSelector((state) => state.movies);const STATES = useSelector((state)=> state.movies)
   const [search, setSearch] = useState('');
   const [activeSide, setActive] = useState('all')
 
   useEffect(() => {
     if (!itemsLoaded) {
-      dispatch(fetchWatchedMovies());
+      dispatch(fetchWatchedMovies({ page: myPage, limit: 20 }));
     }
   }, [dispatch, itemsLoaded]);
-
-
-//   const groups = search
-//   .toLowerCase()
-//   .split(",")
-//   .map(group =>
-//     group
-//       .split("&")
-//       .map(term => term.trim())
-//       .filter(Boolean)
-//   )
-//   .filter(group => group.length);
-
-
-//   const movies = useMemo(() => {
-//   return items.filter(movie => {
-//     return groups.some(group =>
-//       group.every(term =>
-//         movie.movie.toLowerCase().includes(term) ||
-//         (movie.director || "").toLowerCase().includes(term) ||
-//         movie.year.toString().includes(term) ||
-//         movie.era.toLowerCase().includes(term) ||
-//         movie.tags.some(tag => tag.toLowerCase().includes(term)) ||
-//         movie.actors.some(actor => actor.toLowerCase().includes(term))
-//       )
-//     );
-//   });
-// }, [items, search]);
-
 
 
   const movies = useMemo(() => {
@@ -65,56 +37,31 @@ export default function About() {
       });
   }, [items, search]);
 
-  // const golden = []
-  // const silver = []
-  // const bronze = []
-
-  // const filmsByCategory = {
-  //   "Golden Age": golden,
-  //   "Silver Age": silver,
-  //   "Bronze Age": bronze,
-  // };
-
-  // const sortEra = () => {
-  //   movies.forEach(film => {
-  //     switch (film.era.toLowerCase()) {
-  //       case "golden":
-  //         golden.push(film);
-  //         break;
-  //       case "silver":
-  //         silver.push(film);
-  //         break;
-  //       case "bronze":
-  //         bronze.push(film);
-  //         break;
-  //     }
-  //   })
-  //   doThis()
-  // }
-
-  // const doThis = () => {
-  //   Object.entries(filmsByCategory).forEach(([header, filmArray]) => {
-  //     filmArray.forEach(film => {
-  //       console.log(`• ${film.movie} (${film.year})`);
-  //     });
-  //   });
-  // }
-  
-
   const filterName = (film, year) => {
     const filterName = film.replace(/[:\-()\/.,!'"]/g, '')
     return `${filterName} ${year}`
   }
 
 
+  const handlePageChange = (newPage) => {
+    
+    dispatch(actions.addOne())
+    dispatch(actions.changePage(newPage));
+    dispatch(fetchWatchedMovies({ 
+      page: newPage, 
+      limit: pagination.limit 
+    }));
+  };
+
   return (
     <div className='search'>
       <div className="categoryChoice">
         <ul>
-          <li onClick={()=>setSearch('')} ><img src="/allMovies.png"/>ALL MOVIES</li>
-          <li onClick={()=>setSearch('halloween')}><img src="/halloween.png"/>HALLOWEEN</li>
-          <li onClick={()=>setSearch('slasher')}><img src="/slasher.png"/>SLASHER</li>
-          <li onClick={()=>setSearch('monster')}><img src="/monster.png"/>MONSTER</li>
+          <li onClick={() => handlePageChange(2)}>HEY</li>
+          <li onClick={() => setSearch('')} ><img src="/allMovies.png"/>ALL MOVIES</li>
+          <li onClick={() => setSearch('halloween')}><img src="/halloween.png"/>HALLOWEEN</li>
+          <li onClick={() => setSearch('slasher')}><img src="/slasher.png"/>SLASHER</li>
+          <li onClick={() => setSearch('monster')}><img src="/monster.png"/>MONSTER</li>
           {/* <li onClick={()=>sortEra()}>ERA</li> */}
         </ul>
       </div>
@@ -132,7 +79,15 @@ export default function About() {
             
           />
         </div>
+        
       </h2>
+      <div>
+        <p>Page: {pagination.page}</p>
+        <p>total pages: {pagination.totalPages}</p>
+        <p>total items: {pagination.totalItems}</p>
+        <p>limit: {pagination.limit}</p>
+        <p>next: {pagination.hasPrev}</p>
+      </div>
         {movies.map((movie) => (
           <li key={movie.id || movie._id}>
             <div className="image">
