@@ -81,13 +81,13 @@ export default function About() {
         </div>
         
       </h2>
-      <div>
+      {/* <div>
         <p>Page: {pagination.page}</p>
         <p>total pages: {pagination.totalPages}</p>
         <p>total items: {pagination.totalItems}</p>
         <p>limit: {pagination.limit}</p>
         <p>next: {pagination.hasPrev}</p>
-      </div>
+      </div> */}
         {movies.map((movie) => (
           <li key={movie.id || movie._id}>
             <div className="image">
