@@ -1,109 +1,69 @@
-# 🎬 Lurid Origins
+# Lurid Origins
 
-Lurid Origins is a horror film discovery application that allows users to browse and search through a curated list of horror movies. The app focuses on performance, clean state management, and efficient data handling.
+Lurid Origins is a horror movie discovery application for browsing and searching a curated collection of horror films.
 
-🔗 **Live Demo**
-https://luridorigins.vercel.app/
+The project is currently under active development, with the core movie browsing, search, navigation, and API integration already in place.
 
----
+**Live Demo:** https://luridorigins.vercel.app/
 
-## 🚧 Project Status
+## Tech Stack
 
-This project is currently a **work in progress**, but core functionality is fully operational, including data fetching, search, and navigation.
+* **React**
+* **JavaScript**
+* **Redux**
+* **React Router**
+* **Vite**
+* **REST API**
+* **Sharp** for image processing
+* **Vercel**
 
----
+## Current Features
 
-## ⚙️ Tech Stack
+* Search through a large horror movie collection
+* Movie data retrieved from the Lurid Origins API
+* Client-side routing
+* Global application state with Redux
+* Optimized movie imagery
+* Responsive movie browsing interface
 
-* **React** – Frontend framework
-* **Redux** – State management
-* **Prisma API** – Backend data fetching
-* **Sharp** – Image optimization
-* **React Router** – Client-side routing
+## Backend
 
+The frontend communicates with a separate REST API responsible for movie data and database operations.
 
----
+**API Repository:**
+https://github.com/n-scovell/lurid-origins-api
 
-## ✨ Features
+## Project Status
 
-* 🔍 **Search Functionality**
-  Quickly search through a collection of horror films.
+Lurid Origins is a work in progress.
 
-* 🌐 **Global State Management**
-  Uses Zustand for lightweight and scalable state handling.
+The current focus is on expanding the movie browsing experience, improving the interface, and adding additional functionality around the movie collection.
 
-* ⚡ **Optimized Images**
-  Images are processed using Sharp for better performance and load times.
+## Planned Features
 
-* 🔄 **Dynamic Data Fetching**
-  Film data is retrieved via Supabase APIs.
+* Movie filtering and sorting
+* Improved movie detail views
+* Favorites and ratings
+* Additional search capabilities
+* Continued UI/UX improvements
+* Improved mobile experience
 
-* 🧭 **Client-Side Navigation**
-  Smooth routing experience powered by React Router.
+## Development
 
----
-
-## 🧠 Purpose
-
-This project was built to:
-
-* Practice modern React patterns
-* Explore efficient state management with Zustand
-* Implement backend integration using Supabase
-* Improve performance through image optimization
-* Create a scalable foundation for a media-based application
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/n-scovell/luridorigins.git
 cd luridorigins
-```
-
-### Install dependencies
-
-```bash
 npm install
 ```
 
-### Run the development server
+Start the development server:
 
 ```bash
 npm run dev
 ```
-### Run the image optimization
-To re-run images for optimization
-```bash
-npm run dev
----
 
-## 📁 Future Improvements
+## Project
 
-* 🎭 Filter by genre, director, or release year
-* ⭐ User ratings / favorites system
-* 🔐 Authentication (via Supabase)
-* 📱 Improved mobile responsiveness
-* 🎨 UI/UX enhancements
-
----
-
-## 🤝 Contributing
-
-This project is currently personal, but feel free to fork the repo and experiment.
-
----
-
-## 📄 License
-
-This project is open-source and available under the MIT License.
-
----
-
-## 👤 Author
-
-**Nathan Scovell**
-GitHub: https://github.com/n-scovell
+Lurid Origins is a personal full-stack project exploring React application architecture, state management, API integration, image optimization, and performance-focused development.
